@@ -1,14 +1,13 @@
 <template>
-    <header> <h1>Header</h1> </header>
+    <header> <h1>{{title}}</h1> </header>
 </template>
 
 <script>
 export default {
     name: "Header",
-    props:  {
-        
-    title: String
-  }
+         data: () => ({
+             title: "Event Finder"
+            })
 }
 </script>
 
