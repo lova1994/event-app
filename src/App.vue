@@ -2,6 +2,9 @@
   <div id="app">
      <Header />
 
+           <router-link v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
+
+
 <!-- 
     <div id="nav">
       <router-link to="/">Home</router-link> |
