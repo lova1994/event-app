@@ -5,6 +5,5 @@ describe('Events.vue', () => {
   test('snapshot', () => {
       const wrapper = shallowMount(Events)
       expect(wrapper).toMatchSnapshot()
-    
   })
 })
