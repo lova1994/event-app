@@ -1,7 +1,7 @@
 <template>
     <header> 
     <div>
-            <h1>{{title}}</h1> 
+           <router-link to="/">  <h1>{{title}}</h1> </router-link>
             <p>Sign up Log in</p>
              </div>
     <h2>{{punchline}}</h2>
@@ -48,6 +48,9 @@ header {
     // line-height: 0.1em;
 }
 
+a {
+    text-decoration: none;
+}
 
 header > div {
     display: flex;

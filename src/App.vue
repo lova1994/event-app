@@ -2,7 +2,9 @@
   <div id="app">
      <Header />
 
-           <router-link v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
+           <router-link 
+           
+           v-if="$auth.isAuthenticated" to="/profile" >Profile</router-link>
 
 
 <!-- 
