@@ -38,7 +38,6 @@ export default {
 
 * {
     box-sizing: border-box;
-
 }
 
 .user {
@@ -113,7 +112,6 @@ object-fit: cover;
 }
 
 .user {
-
 display:flex;
 margin-top: auto;
 
