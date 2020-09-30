@@ -17,6 +17,7 @@
                 <small>
                     2h ago
                 </small>
+                <button v-if='isEvents'> ATTEND </button>
             </div>
         </div>
     </div>
@@ -31,6 +32,12 @@ export default {
   name: 'Events',
     props: 
     ["event"],
+    computed: {
+  isEvents() {
+
+     return this.$route.name === 'AllEvents'
+  }
+}
 }
 </script>
 

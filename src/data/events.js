@@ -4,8 +4,14 @@ const events = [
    { tag: "Art", id: 2, date: "Tue, sep 2, 12:00", title: "Street Art Guide", description: "Artistic Event, LA", img: "https://images.pexels.com/photos/959314/pexels-photo-959314.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 },
  { tag: "Nature", id: 3, date: "Tue, oct 10, 09:00", title: "High Mountains Hike", description: "Nature Event, LA", img: "https://images.pexels.com/photos/2356059/pexels-photo-2356059.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+},
+{ tag: "Nature", id: 4, date: "Tue, oct 10, 09:00", title: "Look at cute cows", description: "Nature Event, LA", img: "https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 }
 ];
+
+
+
+
 
 // Försök 2, localStorage
 function getEvents() {

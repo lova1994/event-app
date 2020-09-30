@@ -2,14 +2,7 @@
   <div class="home">
  <h1>ALLEVENTS.VUE</h1>
 
-         add event
 
-         <input type="text" v-model="text" placeholder="Add event..." 
-       />
-        <input type="text" v-model="tag" placeholder="Tag" 
-       />
-        <input type="text" v-model="eventTitle" placeholder="Title" 
-       />
 
 
      
@@ -27,13 +20,7 @@
        />
          </div>
 
-    <!-- Check that the SDK client is not currently loading before accessing is methods -->
-    <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-      <!-- show logout when authenticated -->
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
-    </div>
+
   </div>
 </template>
 
@@ -58,16 +45,6 @@ export default {
   } , methods: {
 
  
-    },
-    // Log the user in
-    login() {
-      this.$auth.loginWithRedirect();
-    },
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin
-      });
     }
   };
 
