@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from "../views/Profile.vue";
+import AllEvents from "../views/AllEvents.vue";
+
 import { authGuard } from "../auth/authGuard";
 
 
@@ -28,6 +30,11 @@ const routes = [
       name: "profile",
       component: Profile,
       beforeEnter: authGuard
+    },
+    {
+      path: "/allevents",
+      name: "allevents",
+      component: AllEvents,
     }
 ]
 
