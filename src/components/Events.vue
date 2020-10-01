@@ -9,24 +9,36 @@
         <h4>{{ event.title }}</h4>
         <p>{{ event.description }}</p>
         <div class="user">
-          <img
+          <!-- <img
             src="https://images.pexels.com/photos/3304341/pexels-photo-3304341.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
             alt="user 1"
-          />
+          /> -->
 
-          <div class="user-info">
-            <h5>User name</h5> 
+          <!-- <div class="user-info">
+            <h5>User name</h5>
 
             <small> 2h ago </small>
-          </div>
+          </div> -->
         </div>
-        <button v-show="$route.name === 'allevents'"
-        @click="attendEvent(event)"
-    
-        >Attend Event</button>
+        <button
+         v-if="isAllEvents"
+          @click="attendEvent(event)"
+        >
 
-        {{attendedEvents.length}} people are attending this event
+          Attend Event
+        </button>
+
        
+
+      <p> {{ attendedEvents.length }} people are attending this event</p>
+         <input
+          v-if="isAttendedEvents"
+         
+         type="text" /> 
+ <button v-if="isAttendedEvents" >
+     Send review
+ </button>
+
       </div>
     </div>
   </main>
@@ -36,30 +48,43 @@
 import { getAttendedEvents } from "@/data/events.js";
 
 export default {
-    
   name: "Events",
   components: {},
   props: ["event"],
-   data: () => ({
-       attendedEvents: []
-      }),
+  data: () => ({
+    attendedEvents: [],
+  }),
 
-      created() {
+  created() {
     this.attendedEvents = getAttendedEvents();
+  },
 
-      },
+  computed: {
+        isAttendedEvents() {
+        if(this.$route.path == "/attendedevents" ) {
+          return true
+        } else {
+          return false
+        }},
 
-  computed: {},
-  methods: {
-      attendEvent(event) {
-          console.log("attending to the event " + event.title)
-          console.log("Attended events:" + this.attendedEvents.length)
-          
-          const eventTitle = event.title
-          this.attendedEvents.push({eventTitle})
-          this.$emit('attendEvent', event);
+            isAllEvents() {
+        if(this.$route.path == "/allevents" ) {
+          return true
+        } else {
+          return false
+        }
       }
-  }
+  },
+  methods: {
+    attendEvent(event) {
+      console.log("attending to the event " + event.title);
+      console.log("Attended events:" + this.attendedEvents.length);
+
+      const eventTitle = event.title;
+      this.attendedEvents.push({ eventTitle });
+      this.$emit("attendEvent", event);
+    },
+  },
 };
 </script>
 

@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <!-- <h1>ALLEVENTS.VUE</h1> -->
-
+attended events
 <!-- <button @click="add">
 Add
 </button> -->
 
     <div class="container">
       <Events
-        v-for="event in events"
+        v-for="event in attendedEvents"
         :key="event.id"
         :event="event"
-        @attend="attend"
+        
       />
+
+  
 
       <!-- <h2>Attended Events</h2> -->
       <!-- <ul>
@@ -27,7 +28,7 @@ Add
 <script>
 // @ is an alias to /src
 import Events from "@/components/Events.vue";
-import { getEvents, getAttendedEvents } from "@/data/events.js";
+import {  getAttendedEvents } from "@/data/events.js";
 
 export default {
   name: "home",
@@ -35,22 +36,14 @@ export default {
     Events,
   },
   data: () => ({
-    events: [],
     attendedEvents: [],
   }),
   created() {
-    this.events = getEvents();
     this.attendedEvents = getAttendedEvents();
   },
   methods: {
-    attend() {
-      this.$emit("attending", event);
-     
-    },
-    add() {
-        const test = "TEST"
-        this.attendedEvents.push(test)
-    }
+  
+ 
   },
 };
 </script>
