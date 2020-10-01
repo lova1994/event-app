@@ -9,13 +9,21 @@ const events = [
 }
 ];
 
+const attendedEvents = [
+    { tag: "Adventure", id: 1, date: "Thu, oct 1, 18:00", title: "Testing", description: "Group Adventure, LA", img: "https://images.pexels.com/photos/670061/pexels-photo-670061.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    review: ''
+},
+   { tag: "Art", id: 2, date: "Tue, sep 2, 12:00", title: "Testing 2", description: "Artistic Event, LA", img: "https://images.pexels.com/photos/959314/pexels-photo-959314.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", review: 'Great experience! I loved it.'
+},
+{ tag: "Art", id: 3, date: "Tue, sep 2, 12:00", title: "Testing 58925932893", description: "Artistic Event, LA", img: "https://images.pexels.com/photos/959314/pexels-photo-959314.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", review: 'Great experience! I loved it.'
+}
+];
 
 
 
 
-// Försök 2, localStorage
 function getEvents() {
-    const LS_KEY = 'viewlist-animals';
+    const LS_KEY = 'events';
     let fromLs = localStorage.getItem(LS_KEY);
 
     if( !fromLs ) {
@@ -26,4 +34,16 @@ function getEvents() {
     return JSON.parse(fromLs);
 }
 
-export { getEvents }
+function getAttendedEvents() {
+    const LS_KEY = 'attended_events';
+    let fromLs = localStorage.getItem(LS_KEY);
+
+    if( !fromLs ) {
+        localStorage.setItem(LS_KEY, JSON.stringify(attendedEvents));
+        fromLs = localStorage.getItem(LS_KEY);
+    }
+
+    return JSON.parse(fromLs);
+}
+
+export { getEvents, getAttendedEvents }
