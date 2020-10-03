@@ -20,19 +20,11 @@
         <button v-if="isAllEvents" @click="attendEvent(event)">
           Attend Event
         </button>
-
         <p class="attendedAmount">
           {{ attendedEvents.length }} people are attending this event
         </p>
         <div v-if="isAttendedEvents">
-           
           <textarea v-model="review" />
-          <!-- <p     
- v-for="(review, index) in reviews"
-         :key='index'>
-{{review}} recension
-</p> -->
-
           <button v-if="isAttendedEvents" @click="sendReview(event)">
             Add Review
           </button>
@@ -89,7 +81,6 @@ export default {
       console.log(text);
       console.log("Send review ran");
       console.log(event.title);
-
     },
   },
 };
