@@ -12,9 +12,6 @@ Add
         :event="event"
         
       />
-
-  
-
       <!-- <h2>Attended Events</h2> -->
       <!-- <ul>
         <li v-for="event in attendedEvents" :key="event.id" :event="event">
@@ -58,7 +55,7 @@ export default {
   font-family: Mulish, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hotpink;
+   color: #000;
 }
 
 a {

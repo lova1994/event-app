@@ -2,7 +2,6 @@
   <main>
     <div class="card">
       <img :src="event.img" alt="" />
-
       <div class="card-body">
         <span>{{ event.tag }}</span>
         <small>{{ event.date }}</small>
@@ -13,37 +12,35 @@
             src="https://images.pexels.com/photos/3304341/pexels-photo-3304341.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
             alt="user 1"
           /> -->
-
           <!-- <div class="user-info">
             <h5>User name</h5>
-
             <small> 2h ago </small>
           </div> -->
         </div>
-        <button
-         v-if="isAllEvents"
-          @click="attendEvent(event)"
-        >
-
+        <button v-if="isAllEvents" @click="attendEvent(event)">
           Attend Event
         </button>
 
-       
+        <p class="attendedAmount">
+          {{ attendedEvents.length }} people are attending this event
+        </p>
+        <div v-if="isAttendedEvents">
+           
+          <textarea v-model="review" />
+          <!-- <p     
+ v-for="(review, index) in reviews"
+         :key='index'>
+{{review}} recension
+</p> -->
 
-      <p> {{ attendedEvents.length }} people are attending this event</p>
-         <input
-          v-if="isAttendedEvents"
-         
-         type="text" /> 
- <button v-if="isAttendedEvents" >
-     Send review
- </button>
-
+          <button v-if="isAttendedEvents" @click="sendReview(event)">
+            Add Review
+          </button>
+        </div>
       </div>
     </div>
   </main>
 </template>
-
 <script>
 import { getAttendedEvents } from "@/data/events.js";
 
@@ -53,6 +50,8 @@ export default {
   props: ["event"],
   data: () => ({
     attendedEvents: [],
+    reviews: [{review: "test"}],
+    review: ""
   }),
 
   created() {
@@ -60,35 +59,45 @@ export default {
   },
 
   computed: {
-        isAttendedEvents() {
-        if(this.$route.path == "/attendedevents" ) {
-          return true
-        } else {
-          return false
-        }},
-
-            isAllEvents() {
-        if(this.$route.path == "/allevents" ) {
-          return true
-        } else {
-          return false
-        }
+    isAttendedEvents() {
+      if (this.$route.path == "/attendedevents") {
+        return true;
+      } else {
+        return false;
       }
+    },
+    isAllEvents() {
+      if (this.$route.path == "/allevents") {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   methods: {
     attendEvent(event) {
       console.log("attending to the event " + event.title);
       console.log("Attended events:" + this.attendedEvents.length);
-
       const eventTitle = event.title;
       this.attendedEvents.push({ eventTitle });
       this.$emit("attendEvent", event);
+    },
+    sendReview(event) {
+      let text = this.review;
+      this.reviews.push({ text });
+      this.text = "";
+      console.log(text);
+      console.log("Send review ran");
+      console.log(event.title);
+
     },
   },
 };
 </script>
 
 <style  lang="scss">
+@import "@/assets/scss/_variables.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -121,6 +130,17 @@ img {
   align-items: start;
   padding: 20px;
   min-height: 250px;
+
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    background-color: $orange;
+    color: #fff;
+    font-weight: bold;
+    font-family: mulish, sans-serif;
+    width: 100%;
+  }
 }
 
 .tag {
@@ -176,6 +196,12 @@ img {
 }
 .user-info small {
   color: #888785;
+}
+textarea {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  border: solid 1px hotpink;
 }
 </style>
 
