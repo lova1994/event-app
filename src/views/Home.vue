@@ -5,7 +5,7 @@
         v-for="event in events"
         :key="event.id"
         :event="event"
-        @attend="attend"
+
       />   
       </div>
   </div>
@@ -30,10 +30,6 @@ export default {
     this.attendedEvents = getAttendedEvents();
   },
   methods: {
-    attend() {
-      this.$emit("attending", event);
-     
-    },
     add() {
         const test = "TEST"
         this.attendedEvents.push(test)

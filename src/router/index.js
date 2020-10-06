@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Profile from "../views/Profile.vue";
-import AllEvents from "../views/AllEvents.vue";
 import AttendedEvents from "../views/AttendedEvents.vue";
-import {
-  authGuard
-} from "../auth/authGuard";
-
 Vue.use(VueRouter)
 
 const routes = [{
@@ -25,20 +19,9 @@ const routes = [{
   },
   // add the route to the /profile component
   {
-    path: "/profile",
-    name: "profile",
-    component: Profile,
-    beforeEnter: authGuard
-  },
-  {
     path: "/attendedEvents",
     name: "attendedEvents",
     component: AttendedEvents,
-  },
-  {
-    path: "/allevents",
-    name: "allevents",
-    component: AllEvents
   },
 ]
 

@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import VueRouter from 'vue-router'
 
 
+//kolla att komponenten funkar
 describe('Home.vue', () => {
     it('renders events', () => {
       const msg = ''
@@ -12,7 +13,6 @@ describe('Home.vue', () => {
       expect(wrapper.text()).toMatch(msg)
     })
   })
-
 
   const localVue = createLocalVue()
 localVue.use(VueRouter)
@@ -41,3 +41,10 @@ test("test router", () => {
   expect(wrapper.vm.$route.path).toBe("/");
 });
 
+// snapshot test
+test('mount a component', () => {
+  const wrapper = shallowMount (Home, {
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+  console.log(wrapper.html())
+})

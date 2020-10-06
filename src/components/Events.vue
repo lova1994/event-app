@@ -17,7 +17,7 @@
             <small> 2h ago </small>
           </div> -->
         </div>
-        <button v-if="isAllEvents" @click="attendEvent(event)">
+        <button @click="attendEvent(event)">
           Attend Event
         </button>
         <p class="attendedAmount">
@@ -58,13 +58,6 @@ export default {
         return false;
       }
     },
-    isAllEvents() {
-      if (this.$route.path == "/allevents") {
-        return true;
-      } else {
-        return false;
-      }
-    },
   },
   methods: {
     attendEvent(event) {
@@ -72,7 +65,7 @@ export default {
       console.log("Attended events:" + this.attendedEvents.length);
       const eventTitle = event.title;
       this.attendedEvents.push({ eventTitle });
-      this.$emit("attendEvent", event);
+     
     },
     sendReview(event) {
       let text = this.review;
@@ -82,6 +75,9 @@ export default {
       console.log("Send review ran");
       console.log(event.title);
     },
+    goToSingleEvent(){
+      this.$emit("")
+    }
   },
 };
 </script>
