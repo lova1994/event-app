@@ -2,7 +2,6 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import AttendedEvents from '@/views/AttendedEvents.vue'
 import VueRouter from 'vue-router'
 
-
 //testar
 describe('Home.vue', () => {
     it('renders events', () => {
@@ -33,9 +32,8 @@ shallowMount(AttendedEvents, {
 // check that router path works
 test("test router", () => {
   const $route = {
-    path: "/",
+    path: "/attendedevents",
   };
-
   const wrapper = shallowMount(AttendedEvents, {
     mocks: {
       $route,
@@ -44,7 +42,7 @@ test("test router", () => {
       single: "",
     },
   });
-  expect(wrapper.vm.$route.path).toBe("/");
+  expect(wrapper.vm.$route.path).toBe("/attendedevents");
 });
 
 
