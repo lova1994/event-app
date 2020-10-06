@@ -5,13 +5,7 @@
       <router-link to="/">
         <h1>{{ title }}</h1>
       </router-link>
-            <!-- Check that the SDK client is not currently loading before accessing is methods -->
-    <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
-      <button class="sign" v-if="!$auth.isAuthenticated" @click="login">Sign in</button>
-      <!-- show logout when authenticated -->
-      <button class="sign"  v-if="$auth.isAuthenticated" @click="logout">Sign out</button>
-    </div>
+
     </div>
 
     <!-- <h2 >{{ punchline }}</h2>
@@ -27,16 +21,7 @@ export default {
     punchline: "Discover cool events in your city.",
   }),
     methods: {
-    // Log the user in
-    login() {
-      this.$auth.loginWithRedirect();
-    },
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin,
-      });
-    },
+
   },
 };
 </script>

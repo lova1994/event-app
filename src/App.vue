@@ -1,21 +1,8 @@
 <template>
   <div id="app">
     <Header />
-    <router-link v-if="$auth.isAuthenticated" to="/profile"
-      >Profile</router-link
-    >
-    <router-link v-if="$auth.isAuthenticated" to="/allevents"
-      >All Events</router-link
-    >
-    <router-link v-if="$auth.isAuthenticated" to="/attendedevents"
-      >Attended Events</router-link
-    >
 
-    <!-- 
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+
     <router-view />
     <div class="container">
     </div>
@@ -24,12 +11,13 @@
 
 <script>
 import Header from "./components/Header.vue";
-// import Events from './components/Events.vue';
+
 
 export default {
   name: "App",
   components: {
     Header,
+
   },
 };
 </script>
