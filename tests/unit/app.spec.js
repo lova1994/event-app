@@ -10,5 +10,3 @@ describe('App.vue', () => {
       expect(wrapper.text()).toMatch(msg)
     })
   })
-  
-  
