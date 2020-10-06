@@ -1,11 +1,13 @@
 <template>
   <div class="home">
+
     <div class="container">
      <Events
         v-for="event in events"
         :key="event.id"
         :event="event"
 
+      
       />   
       </div>
   </div>
@@ -14,7 +16,7 @@
 <script>
 // @ is an alias to /src
 import Events from "@/components/Events.vue";
-import { getEvents, getAttendedEvents } from "@/data/events.js";
+import { getEvents } from "@/data/events.js";
 
 export default {
   name: "home",
@@ -23,17 +25,11 @@ export default {
   },
   data: () => ({
     events: [],
-    attendedEvents: [],
   }),
   created() {
     this.events = getEvents();
-    this.attendedEvents = getAttendedEvents();
   },
   methods: {
-    add() {
-        const test = "TEST"
-        this.attendedEvents.push(test)
-    }
   },
 };
 </script>

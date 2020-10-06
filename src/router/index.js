@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import SingleEvent from "../views/SingleEvent.vue";
 import AttendedEvents from "../views/AttendedEvents.vue";
+
+
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -18,9 +22,15 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
   },
   // add the route to the /profile component
+
   {
-    path: "/attendedEvents",
-    name: "attendedEvents",
+    path: "/singleevent",
+    name: "SingleEvent",
+    component: SingleEvent,
+  },
+  {
+    path: "/attendedevents",
+    name: "AttendedEvents",
     component: AttendedEvents,
   },
 ]
