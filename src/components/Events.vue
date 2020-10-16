@@ -8,32 +8,18 @@
         <h4>{{ event.title }}</h4>
         <p>{{ event.description }}</p>
         <div class="user">
-          <!-- <img
-            src="https://images.pexels.com/photos/3304341/pexels-photo-3304341.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt="user 1"
-          /> -->
-          <!-- <div class="user-info">
-            <h5>User name</h5>
-            <small> 2h ago </small>
-          </div> -->
         </div>
-        <button v-if="isAllEvents" @click="attendEvent(event)">
-          Attend Event
-        </button>
-
+        <button 
+        id="attend"
+        v-if="isHome"
+        @click="attendEvent(event)">Attend Event</button>
         <p class="attendedAmount">
-          {{ attendedEvents.length }} people are attending this event
+          {{ event.attendees }} people are attending this event
         </p>
         <div v-if="isAttendedEvents">
-           
           <textarea v-model="review" />
-          <!-- <p     
- v-for="(review, index) in reviews"
-         :key='index'>
-{{review}} recension
-</p> -->
-
-          <button v-if="isAttendedEvents" @click="sendReview(event)">
+          <button v-if="isAttendedEvents" 
+          @click="sendReview(event)">
             Add Review
           </button>
         </div>
@@ -42,45 +28,40 @@
   </main>
 </template>
 <script>
-import { getAttendedEvents } from "@/data/events.js";
+import { getEvents } from "@/data/events.js";
 
 export default {
   name: "Events",
-  components: {},
   props: ["event"],
   data: () => ({
-    attendedEvents: [],
-    reviews: [{review: "test"}],
-    review: ""
+    events: [],
+    reviews: [{ review: "test" }],
+    review: "",
   }),
 
   created() {
-    this.attendedEvents = getAttendedEvents();
+    this.events = getEvents();
   },
-
-  computed: {
-    isAttendedEvents() {
-      if (this.$route.path == "/attendedevents") {
+    computed: {
+      isAttendedEvents(){
+        if (this.$route.path == '/attendedevents') {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      isHome() {
+      if(this.$route.path == '/') {
         return true;
       } else {
         return false;
       }
+    }
     },
-    isAllEvents() {
-      if (this.$route.path == "/allevents") {
-        return true;
-      } else {
-        return false;
-      }
-    },
-  },
   methods: {
     attendEvent(event) {
       console.log("attending to the event " + event.title);
-      console.log("Attended events:" + this.attendedEvents.length);
-      const eventTitle = event.title;
-      this.attendedEvents.push({ eventTitle });
-      this.$emit("attendEvent", event);
+      this.event.attendees++;
     },
     sendReview(event) {
       let text = this.review;
@@ -89,10 +70,9 @@ export default {
       console.log(text);
       console.log("Send review ran");
       console.log(event.title);
-
     },
   },
-};
+}
 </script>
 
 <style  lang="scss">
@@ -204,4 +184,3 @@ textarea {
   border: solid 1px hotpink;
 }
 </style>
-

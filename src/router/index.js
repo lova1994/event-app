@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Profile from "../views/Profile.vue";
-import AllEvents from "../views/AllEvents.vue";
+import SingleEvent from "../views/SingleEvent.vue";
 import AttendedEvents from "../views/AttendedEvents.vue";
-import {
-  authGuard
-} from "../auth/authGuard";
+
+
 
 Vue.use(VueRouter)
 
@@ -24,21 +22,16 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
   },
   // add the route to the /profile component
+
   {
-    path: "/profile",
-    name: "profile",
-    component: Profile,
-    beforeEnter: authGuard
+    path: "/singleevent",
+    name: "SingleEvent",
+    component: SingleEvent,
   },
   {
-    path: "/attendedEvents",
-    name: "attendedEvents",
+    path: "/attendedevents",
+    name: "AttendedEvents",
     component: AttendedEvents,
-  },
-  {
-    path: "/allevents",
-    name: "allevents",
-    component: AllEvents
   },
 ]
 

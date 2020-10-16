@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mount a component 1`] = `
+<div class="home">
+  attended events
+  <div class="container">
+    <events-stub event="[object Object]"></events-stub>
+    <events-stub event="[object Object]"></events-stub>
+  </div>
+</div>
+`;
