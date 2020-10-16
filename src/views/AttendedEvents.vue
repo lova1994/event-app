@@ -11,6 +11,7 @@ Add
         :key="event.id"
         :event="event"
         
+        
       />
       <!-- <h2>Attended Events</h2> -->
       <!-- <ul>
