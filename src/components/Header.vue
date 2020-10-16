@@ -5,8 +5,11 @@
       <router-link to="/">
         <h1>{{ title }}</h1>
       </router-link>
-
     </div>
+      <router-link
+      
+      class="link"
+       to='/attendedevents'> Attended events </router-link>
 
     <!-- <h2 >{{ punchline }}</h2>
     <a href="#" class="btn"> Join Event Finder </a> -->
@@ -53,8 +56,19 @@ header {
   // line-height: 0.1em;
 }
 
+.link {
+  text-decoration: underline;
+  color: black;
+  font-size: 1.2em;
+
+}
+
 a {
-  text-decoration: none;
+  text-decoration: none ;
+}
+
+router-link {
+  color: black;
 }
 
 header > div {
